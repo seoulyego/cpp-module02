@@ -1,0 +1,7 @@
+.DS_Store
+.vscode/
+.obj/
+.cache/
+compile_commands.json
+fixed
+fixed_point
