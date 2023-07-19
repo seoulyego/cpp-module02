@@ -18,6 +18,18 @@ class Fixed {
 		void	setRawBits(int const raw);
 		int		toInt(void) const;
 		float	toFloat(void) const;
+
+		bool	operator>(Fixed const & ref) const ;
+		bool	operator<(Fixed const & ref) const ;
+		bool	operator>=(Fixed const & ref) const ;
+		bool	operator<=(Fixed const & ref) const ;
+		bool	operator==(Fixed const & ref) const ;
+		bool	operator!=(Fixed const & ref) const ;
+
+		Fixed	operator+(Fixed const & ref) const ;
+		Fixed	operator-(Fixed const & ref) const ;
+		Fixed	operator*(Fixed const & ref) const ;
+		Fixed	operator/(Fixed const & ref) const ;
 };
 
 std::ostream &operator<<(std::ostream& , const Fixed& );
