@@ -51,12 +51,6 @@ float	Fixed::toFloat(void) const {
 	return ((float)this->value / (1 << this->bits));
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& a)
-{
-	os << a.toFloat();
-    return os;
-}
-
 bool	Fixed::operator>(const Fixed& ref) const {
 	return this->getRawBits() > ref.getRawBits();
 }
@@ -99,4 +93,58 @@ Fixed	Fixed::operator*(Fixed const & ref) const {
 Fixed	Fixed::operator/(Fixed const & ref) const {
 	Fixed	ret(this->toFloat() / ref.toFloat());
 	return ret;
+}
+
+Fixed&	Fixed::operator++(void) {
+	this->value++;
+	return *this;
+}
+
+const Fixed	Fixed::operator++(int) {
+	const Fixed	old(*this);
+
+	this->operator++();
+	return old;
+}
+
+Fixed&	Fixed::operator--(void) {
+	this->value--;
+	return *this;
+}
+
+const Fixed	Fixed::operator--(int) {
+	const Fixed	old(*this);
+
+	this->operator--();
+	return old;
+}
+
+Fixed&	Fixed::min(Fixed& ref1, Fixed& ref2) {
+	if (ref1 <= ref2)
+		return (ref1);
+	return (ref2);
+}
+
+const Fixed&	Fixed::min(const Fixed& ref1, const Fixed& ref2) {
+	if (ref1 <= ref2)
+		return (ref1);
+	return (ref2);
+}
+
+Fixed&	Fixed::max(Fixed& ref1, Fixed& ref2) {
+	if (ref1 <= ref2)
+		return (ref2);
+	return (ref1);
+}
+
+const Fixed&	Fixed::max(const Fixed& ref1, const Fixed& ref2) {
+	if (ref1 <= ref2)
+		return (ref2);
+	return (ref1);
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& a)
+{
+	os << a.toFloat();
+    return os;
 }
