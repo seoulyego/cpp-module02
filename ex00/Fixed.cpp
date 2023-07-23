@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 #include <iostream>
 
-Fixed::Fixed(void) {
+Fixed::Fixed() {
 	std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
 };
@@ -19,12 +19,12 @@ Fixed&	Fixed::operator=(const Fixed& object) {
 	return *this;
 }
 
-Fixed::~Fixed(void) {
+Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 	;
 }
 
-int	Fixed::getRawBits(void) const {
+int	Fixed::getRawBits() const {
 	std::cout << "getRawBits member function called" << std::endl;
 	return this->value;
 }

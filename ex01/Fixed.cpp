@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 
-Fixed::Fixed(void) {
+Fixed::Fixed() {
 	std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
 };
@@ -30,12 +30,12 @@ Fixed&	Fixed::operator=(const Fixed& object) {
 	return *this;
 }
 
-Fixed::~Fixed(void) {
+Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 	;
 }
 
-int	Fixed::getRawBits(void) const {
+int	Fixed::getRawBits() const {
 	return this->value;
 }
 
@@ -43,16 +43,16 @@ void	Fixed::setRawBits(int const raw) {
 	this->value = raw;
 }
 
-int	Fixed::toInt(void) const {
+int	Fixed::toInt() const {
 	return this->value >> this->bits;
 }
 
-float	Fixed::toFloat(void) const {
+float	Fixed::toFloat() const {
 	return ((float)this->value / (1 << this->bits));
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& a)
+std::ostream& operator<<(std::ostream& os, const Fixed& object)
 {
-	os << a.toFloat();
+	os << object.toFloat();
     return os;
 }

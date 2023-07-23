@@ -8,18 +8,19 @@ class Fixed {
 		int					value;
 		const static int	bits = 8;
 	public:
-		Fixed(void);
+		Fixed();
 		Fixed(int num);
 		Fixed(const float num);
 		Fixed(const Fixed &object);
 		Fixed& operator=(const Fixed& object);
 		~Fixed();
-		int		getRawBits(void) const;
+
+		int		getRawBits() const;
 		void	setRawBits(int const raw);
-		int		toInt(void) const;
-		float	toFloat(void) const;
+		int		toInt() const;
+		float	toFloat() const;
 };
 
-std::ostream &operator<<(std::ostream& , const Fixed& );
+std::ostream &operator<<(std::ostream& os, const Fixed& object);
 
 #endif  // FIXED_HPP

@@ -6,11 +6,12 @@ class Fixed {
 		int					value;
 		const static int	bits = 8;
 	public:
-		Fixed(void);
+		Fixed();
 		Fixed(const Fixed &object);
 		Fixed& operator=(const Fixed& object);
 		~Fixed();
-		int		getRawBits(void) const;
+
+		int		getRawBits() const;
 		void	setRawBits(int const raw);
 };
 

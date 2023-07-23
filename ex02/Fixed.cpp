@@ -2,24 +2,21 @@
 #include <iostream>
 #include <cmath>
 
-Fixed::Fixed(void) {
+Fixed::Fixed() : value(0) {
 	std::cout << "Default constructor called" << std::endl;
-	this->value = 0;
 };
 
-Fixed::Fixed(const int num) {
+Fixed::Fixed(const int num) : value(num << this->bits) {
 	std::cout << "Int constructor called" << std::endl;
-	this->value = num << this->bits;
 }
 
-Fixed::Fixed(const float num) {
+Fixed::Fixed(const float num) : value(num *(1 << this->bits)) {
 	std::cout << "Float constructor called" << std::endl;
-	this->value = num * (1 << this->bits);
 }
 
 Fixed::Fixed(const Fixed& object) {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = object;
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed&	Fixed::operator=(const Fixed& object) {
@@ -30,12 +27,11 @@ Fixed&	Fixed::operator=(const Fixed& object) {
 	return *this;
 }
 
-Fixed::~Fixed(void) {
+Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
-	;
 }
 
-int	Fixed::getRawBits(void) const {
+int	Fixed::getRawBits() const {
 	return this->value;
 }
 
@@ -43,11 +39,11 @@ void	Fixed::setRawBits(int const raw) {
 	this->value = raw;
 }
 
-int	Fixed::toInt(void) const {
+int	Fixed::toInt() const {
 	return this->value >> this->bits;
 }
 
-float	Fixed::toFloat(void) const {
+float	Fixed::toFloat() const {
 	return ((float)this->value / (1 << this->bits));
 }
 
@@ -95,7 +91,7 @@ Fixed	Fixed::operator/(Fixed const & ref) const {
 	return ret;
 }
 
-Fixed&	Fixed::operator++(void) {
+Fixed&	Fixed::operator++() {
 	this->value++;
 	return *this;
 }
@@ -107,7 +103,7 @@ const Fixed	Fixed::operator++(int) {
 	return old;
 }
 
-Fixed&	Fixed::operator--(void) {
+Fixed&	Fixed::operator--() {
 	this->value--;
 	return *this;
 }
@@ -143,8 +139,8 @@ const Fixed&	Fixed::max(const Fixed& ref1, const Fixed& ref2) {
 	return (ref1);
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& a)
+std::ostream& operator<<(std::ostream& os, const Fixed& object)
 {
-	os << a.toFloat();
+	os << object.toFloat();
     return os;
 }

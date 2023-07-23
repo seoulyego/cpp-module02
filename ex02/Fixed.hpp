@@ -8,17 +8,17 @@ class Fixed {
 		int					value;
 		const static int	bits = 8;
 	public:
-		Fixed(void);
+		Fixed();
 		Fixed(int num);
 		Fixed(const float num);
 		Fixed(const Fixed &object);
 		Fixed& operator=(const Fixed& object);
 		~Fixed();
 
-		int		getRawBits(void) const;
+		int		getRawBits() const;
 		void	setRawBits(int const raw);
-		int		toInt(void) const;
-		float	toFloat(void) const;
+		int		toInt() const;
+		float	toFloat() const;
 
 		bool	operator>(Fixed const & ref) const;
 		bool	operator<(Fixed const & ref) const;
@@ -32,9 +32,9 @@ class Fixed {
 		Fixed	operator*(Fixed const & ref) const;
 		Fixed	operator/(Fixed const & ref) const;
 
-		Fixed&	operator++(void);
+		Fixed&	operator++();
 		const Fixed	operator++(int);
-		Fixed&	operator--(void);
+		Fixed&	operator--();
 		const Fixed	operator--(int);
 
 		static Fixed&	min(Fixed& ref1, Fixed& ref2);
@@ -43,6 +43,6 @@ class Fixed {
 		static const Fixed&	max(const Fixed& ref1, const Fixed& ref2);
 };
 
-std::ostream &operator<<(std::ostream& , const Fixed& ref);
+std::ostream &operator<<(std::ostream& os, const Fixed& object);
 
 #endif  // FIXED_HPP
