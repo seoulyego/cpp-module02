@@ -1,5 +1,5 @@
-NAME				:=	fixed_point
-PROJECT_NAME		:=	FIXED_POINT
+NAME				:=	fixed_overload
+PROJECT_NAME		:=	FIXED_OVERLOAD
 
 OBJ_DIR				:=	./.obj/
 CACHE_DIR			:=	./.cache/
